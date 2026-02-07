@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user/react-native-shared-passwords.git"
+    "url": "git+https://github.com/aryan-dwivedi/react-native-shared-passwords.git"
   },
   "author": "Your Name <your.email@example.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/user/react-native-shared-passwords/issues"
+    "url": "https://github.com/aryan-dwivedi/react-native-shared-passwords/issues"
   },
-  "homepage": "https://github.com/user/react-native-shared-passwords#readme",
+  "homepage": "https://github.com/aryan-dwivedi/react-native-shared-passwords#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
