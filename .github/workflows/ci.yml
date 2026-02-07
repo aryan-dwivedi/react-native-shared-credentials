@@ -19,6 +19,22 @@ jobs:
       - run: npm run lint
       - run: npm run typescript
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test -- --coverage
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -81,7 +97,7 @@ jobs:
   publish-docs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    needs: [lint, build]
+    needs: [lint, test, build]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
