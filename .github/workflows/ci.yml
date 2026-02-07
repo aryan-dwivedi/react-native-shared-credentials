@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - run: npm ci
       - run: npm run lint
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - run: npm ci
       - run: npm test -- --coverage
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - run: npm ci
       - run: npm run build
@@ -52,13 +52,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - run: npm ci
       - run: npm run build
       - name: Install example dependencies
         working-directory: example
         run: npm install
+      - name: Generate iOS project
+        working-directory: example
+        run: npx react-native init SharedPasswordsExample --directory temp-init --version 0.76.0 --skip-git-init --skip-install && cp -r temp-init/ios . && rm -rf temp-init
       - name: Pod install
         working-directory: example/ios
         run: pod install
@@ -79,7 +82,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - uses: actions/setup-java@v4
         with:
@@ -90,6 +93,9 @@ jobs:
       - name: Install example dependencies
         working-directory: example
         run: npm install
+      - name: Generate Android project
+        working-directory: example
+        run: npx react-native init SharedPasswordsExample --directory temp-init --version 0.76.0 --skip-git-init --skip-install && cp -r temp-init/android . && rm -rf temp-init
       - name: Build Android
         working-directory: example/android
         run: ./gradlew assembleDebug
@@ -102,7 +108,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       - name: Install docs dependencies
         working-directory: docs
