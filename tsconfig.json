@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
+    "types": ["jest"],
     "paths": {
       "react-native-shared-passwords": ["./src/index"]
     },
@@ -25,5 +26,5 @@
     "target": "ESNext",
     "verbatimModuleSyntax": false
   },
-  "exclude": ["node_modules", "lib", "example", "docs"]
+  "exclude": ["node_modules", "lib", "example", "docs", "plugin"]
 }
